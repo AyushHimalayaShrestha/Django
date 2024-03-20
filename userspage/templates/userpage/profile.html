@@ -1,0 +1,43 @@
+{% extends 'layouts.html' %}
+
+{% block title %}
+<title>My Profile</title>
+{% endblock %}
+
+
+
+{% block main_content %}
+{% include 'userpage/header.html' %}
+
+<!-- start cart -->
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-10">
+            <h2>My Profile</h2>
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            
+            {% endfor %}
+            <h1>FirstName:{{user.first_name}}</h1>
+            <h1>LastName:{{user_lastname}}</h1>
+            <h2>Username:{{user.username}}</h2>
+            <h2>Email:{{user.email}}</h2>
+
+            <a href="/updateprofile" class="btn btn-warning">Update Profile</a>
+          
+           
+        </div>
+</div>
+<!-- end cart-->
+{% include 'userpage/footer.html' %}
+{% endblock %}

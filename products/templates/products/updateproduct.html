@@ -1,0 +1,36 @@
+{% extends 'admins/layout.html' %}
+{% block title %}
+<title>Update Product</title>
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block main_content %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 mt-3">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            
+            {% endfor %}
+            <form action="" method="post" class="shadow p-3" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{forms | crispy}}
+
+                <div class="my-2">
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
